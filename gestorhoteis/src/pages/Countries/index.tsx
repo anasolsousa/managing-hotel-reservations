@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./styles.module.css";
 
 // caracterizar dados
 type Country = {
@@ -32,10 +33,16 @@ export function Countries(){
 
     // mostrar os dados no ecra
     return(
-       <div>
-           {countries.map(country => (
-            <p key={country.id}>{country.name}</p>
-           ))}
-       </div>
+        <main>
+            <body>
+                <div className={styles.opction}>
+                    {countries.map(country => (
+                        <p key={country.id}>{country.name}</p>
+                    ))}
+                </div>
+            </body>  
+        </main>
+
+        
     );
 }
