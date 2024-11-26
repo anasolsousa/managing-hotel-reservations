@@ -1,0 +1,40 @@
+
+.conteiner{
+    background-color: #f6f5f5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.button{
+    margin-left: 1rem;
+
+    a{
+        text-decoration: none;
+        color :black;
+        text-transform: uppercase;
+        
+    }
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+    list-style-type: none;
+    text-align: center;
+   
+
+}
+
+.menu a:hover{
+    text-decoration-line: underline;
+    text-underline-offset: 8px;
+}
+
+
