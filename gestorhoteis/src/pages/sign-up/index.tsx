@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import styles from "./styles.module.css";
 
 export function SignUp(){
 
@@ -9,7 +9,7 @@ export function SignUp(){
     const [password, setPassword] = useState("");
     const [birth_date, setbirth_date] = useState("");
     const [country_id, setCountry_id] = useState("");
-    const [terms, setTerms] = useState(""); // boolean
+    const [terms, setTerms] = useState(false); // boolean
 
     async function handleCreateNewAccount(event) {
 
@@ -50,23 +50,54 @@ export function SignUp(){
                     console.log(e)
                 }
             }
-        
+
+            function handleChange(event){
+
+                event.preventDefault();
+
+                // !terms = verificar se o "terms" é false se sim ele obriga a marcar true
+                if(!terms) {
+                    return;
+                }
+            }
+            
             return(
                 // form
-                <>
-                <h1>Sign-up</h1>
-        
-                <form onSubmit={handleCreateNewAccount}>
-                    <input type="text" onChange={(event) => setName(event.target.value)}/>   
-                    <input type="email" onChange={(event) => setEmail(event.target.value)}/>
-                    <input type="password" onChange={(event) => setPassword(event.target.value)}/>
-                    <input type="birth_date" onChange={(event) => setbirth_date(event.target.value)}/>        
-                    <input type="country_id" onChange={(event) => setCountry_id(event.target.value)}/> 
-                    <input type="terms" onChange={(event) => setTerms(event.target.value)}/>
+                <main className={styles.main}>
+                    <h1>Sign-up</h1>
+                    
+                    <form onSubmit={handleCreateNewAccount}>
+                        <label>
+                            <p>Nome:</p>
+                            <input type="text" onChange={(event) => setName(event.target.value)} required/>
+                        </label>
+                        <label>
+                            <p>Email:</p>
+                            <input type="email" onChange={(event) => setEmail(event.target.value)} required/>
+                        </label>
+                        <label>
+                            <p>Password:</p>
+                            <input type="password" onChange={(event) => setPassword(event.target.value)} required/>
+                        </label>
+                        <label>
+                            <p>Data Nascimento</p>
+                            <input type="date" onChange={(event) => setbirth_date(event.target.value)} required/>  
+                        </label>
+                        <label>
+                            <p>Country</p>
+                            <input type="country_id" onChange={(event) => setCountry_id(event.target.value)} required/>
+                        </label>
+                        <label className={styles.checkbox}>
+                            <h3>{terms ? "You accepted the terms and conditions." : "Accept terms and conditions."}</h3>
+                            <input type="checkbox" onChange={(event) => setTerms(event.target.checked) } required/>
+                        </label>
 
-                    <button type="submit">registar</button>
-                </form>
-                </>
+                        <button type="submit">Create account</button>
+                    </form>
+                </main>
+                
+                
+                
                
             )
 }

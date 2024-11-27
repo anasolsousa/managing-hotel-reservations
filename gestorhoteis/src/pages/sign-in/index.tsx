@@ -3,53 +3,60 @@ import { useNavigate } from "react-router-dom";
 
 export function SignIn(){
 
+    // variaveis que armazenam os valores e as que sao usadas para atualizar
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate(); //redirecionar o ultilizador e guarda essa funcao na variavel
 
-    const navigate = useNavigate();
 
-    async function handleLogin(event:React.FormEvent) {
+    async function handleLogin(event) {
         
         event.preventDefault();
-    }
 
-    try {
-        const response = await fetch("https://api-tma-2024-production.up.railway.app/sign-in",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email, 
-                password: password
-            })
-        })
-        .then(async (response) => {
-            return {
-                response,
-                data: await response.json()
+        // verifica se os campos sao preenchidos
+        if(!email || !password){
+            alert("Preencha os campos todos")
+            return;
+        }
+    
+        try {
+            const response = await fetch("https://api-tma-2024-production.up.railway.app/sign-in",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }, // transformar os dados em json
+                body: JSON.stringify({
+                    email: email, 
+                    password: password
+                }),
+            }); // processar a resposta da api
+                const data = await response.json();
+
+                if(response.ok){
+                    
+                    localStorage.setItem("token", data.token)
+                    // para redirecionar para outro local apos login bem sucedido
+                    navigate("/") 
+                } else{
+                    alert(data.message || "Erro ao fazer login. Verifique suas credenciais.");
+                }
+            }catch(e) { 
+                console.log(e) // se der algum erro sera mostrado aqui
             }
-        }) // ve a resposta da api
-        .then(({data,response}) => {
-            console.log(data);
-
-            // 201 - indica que algo foi criado com sucesso
-            if(response.status === 201){
-                localStorage.setItem("token", data.token)
-            }   
-        }) // se der algum erro sera mostrado aqui
-    }catch(e) {
-        console.log(e)
     }
 
-
+    // associar a funcao ao evento onSubmit
     return(
+        <>
+        <h1>Sign-in</h1>
+
         <form onSubmit={handleLogin}>
 
-            <input type="email" onChange={(event) => setEmail(event.target.value)}/>
-            <input type="password" onChange={(event) => setPassword(event.target.value)}/>
+            <input type="email" placeholder="Insira o email" onChange={(event) => setEmail(event.target.value)} required/>
+            <input type="password" placeholder="Insira a password" onChange={(event) => setPassword(event.target.value)} required/>
                     
             <button type="submit">Entrar</button>
         </form>
+        </>
     )
 }
