@@ -62,9 +62,6 @@ export function SignUp(){
                 }
             }
 
-            function handleClick(){
-                alert("Sucessed");
-            }
             
             return(
                 // form
@@ -83,7 +80,7 @@ export function SignUp(){
                                 <input placeholder="Password" type="password" onChange={(event) => setPassword(event.target.value)} required/>
                             </label>
                             <label>
-                                <input  className={styles.formDate} placeholder="Date of Birth" type="date"  onChange={(event) => setbirth_date(event.target.value)} required/>  
+                                <input className={styles.formDate} placeholder="Date of Birth" type="date"  onChange={(event) => setbirth_date(event.target.value)} required/>  
                             </label>
                             <label>
                                 <Countries onChange={(countryId) => setCountry_id(countryId)} />
@@ -95,7 +92,7 @@ export function SignUp(){
                             <input type="checkbox" onChange={(event) => setTerms(event.target.checked) } required/>
                         </div>
 
-                        <button type="submit" onClick={handleClick}>Create account</button>
+                        <button type="submit">Create account</button>
                     </form>
                 </main>
                 
