@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./styles.module.css";
 
 export function SignIn(){
 
@@ -50,12 +51,16 @@ export function SignIn(){
         <>
         <h1>Sign-in</h1>
 
-        <form onSubmit={handleLogin}>
-
-            <input type="email" placeholder="Insira o email" onChange={(event) => setEmail(event.target.value)} required/>
-            <input type="password" placeholder="Insira a password" onChange={(event) => setPassword(event.target.value)} required/>
-                    
-            <button type="submit">Entrar</button>
+        <form className={styles.form} onSubmit={handleLogin}>
+            <div className={styles.formInput}>
+                <label>
+                    <input type="email" placeholder="Email" onChange={(event) => setEmail(event.target.value)} required/>
+                </label>
+               <label>
+                    <input type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} required/>
+               </label>      
+                <button type="submit">Entrar</button>
+            </div>
         </form>
         </>
     )

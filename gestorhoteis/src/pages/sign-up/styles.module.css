@@ -1,26 +1,91 @@
 
+
 .main{
     text-align: center;
 }
 
+h1{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: rgb(249 115 22);
+    text-align: center;
+}
 
+.form{
+    text-align: center;
+    padding-left: 2rem;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 label p{
-
     margin: auto;
 }
 
-input{
-    background-color: white;
-    border: 1px solid rgb(226, 226, 226);
+.formInput input{
+	padding: 0 10px;
+	height: 35px;
+	font-size: 1rem;
+    background-color: rgb(248, 248, 248);
+    border: 1px solid rgb(255, 255, 255);
     color: black;
     color-scheme: black;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
 }
 
-.checkbox{
+
+.formInput input:focus {
+    outline: none;
+    border: 1px solid rgb(253 186 116);
+}
+
+input[type="date"] {
+    padding: 0 40px;
+    height: 35px;
+    font-size: 1rem;
+    background-color: rgb(248, 248, 248);
+    border: 1px solid rgb(255, 255, 255);
+    color: black;
+    color-scheme: black;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.formCheckbox{
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+    margin: none;
+
+    input{
+        background-color: white;
+    }
+
+    h3{
+        margin-left: 10px;
+        font-size: 14px;
+    }
 }
+
+.form button{
+    background-color: rgb(249 115 22);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 2rem;
+}
+
+.form button:hover{
+    background-color: rgb(253 186 116);
+    color: white;
+}
+
 
 

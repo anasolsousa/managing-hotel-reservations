@@ -18,7 +18,7 @@ export function AppLayout(){
 
                     <div className={styles.buttons}>
                         <div className={styles.button}>
-                            <Link to="/SignUp">Sign Up</Link>
+                            <Link to="/SignUp">Create an Account</Link>
                         </div>
                         <div className={styles.button}> 
                             <Link to="/SignIn">Sign In</Link>

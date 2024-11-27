@@ -42,11 +42,11 @@ export default function Countries({onChange}: CountriesProps){
     return (
         <main>
             <body>
-            <select
+            <select className={styles.countrySelect}
                 onChange={(event) => onChange(event.target.value)} // Chama a função ao alterar o valor
                     required
                     >
-                    <option value="">Selecione...</option>
+                    <option value="">- Select Country -</option>
 
                     {countries.map((country) => (
                         <option key={country.id} value={country.id}>

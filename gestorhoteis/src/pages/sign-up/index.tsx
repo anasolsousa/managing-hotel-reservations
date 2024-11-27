@@ -63,39 +63,37 @@ export function SignUp(){
             }
 
             function handleClick(){
-                alert("Sucessde");
+                alert("Sucessed");
             }
             
             return(
                 // form
                 <main className={styles.main}>
-                    <h1>Sign-up</h1>
+                    <h1>Create an Account</h1>
                     
-                    <form onSubmit={handleCreateNewAccount}>
-                        <label>
-                            <p>Nome:</p>
-                            <input type="text" onChange={(event) => setName(event.target.value)} required/>
-                        </label>
-                        <label>
-                            <p>Email:</p>
-                            <input type="email" onChange={(event) => setEmail(event.target.value)} required/>
-                        </label>
-                        <label>
-                            <p>Password:</p>
-                            <input type="password" onChange={(event) => setPassword(event.target.value)} required/>
-                        </label>
-                        <label>
-                            <p>Data Nascimento</p>
-                            <input type="date" onChange={(event) => setbirth_date(event.target.value)} required/>  
-                        </label>
-                        <label>
-                            <p>Country</p>
-                            <Countries onChange={(countryId) => setCountry_id(countryId)} />
-                        </label>
-                        <label className={styles.checkbox}>
+                    <form className={styles.form} onSubmit={handleCreateNewAccount}>
+                        <div className={styles.formInput}>
+                            <label>
+                                <input placeholder="Name" type="text" onChange={(event) => setName(event.target.value)} required/>
+                            </label>
+                            <label>
+                                <input placeholder="Email" type="email" onChange={(event) => setEmail(event.target.value)} required/>
+                            </label>
+                            <label>
+                                <input placeholder="Password" type="password" onChange={(event) => setPassword(event.target.value)} required/>
+                            </label>
+                            <label>
+                                <input  className={styles.formDate} placeholder="Date of Birth" type="date"  onChange={(event) => setbirth_date(event.target.value)} required/>  
+                            </label>
+                            <label>
+                                <Countries onChange={(countryId) => setCountry_id(countryId)} />
+                            </label>
+                        </div>
+                        
+                        <div className={styles.formCheckbox}>
                             <h3>{terms ? "You accepted the terms and conditions." : "Accept terms and conditions."}</h3>
                             <input type="checkbox" onChange={(event) => setTerms(event.target.checked) } required/>
-                        </label>
+                        </div>
 
                         <button type="submit" onClick={handleClick}>Create account</button>
                     </form>
