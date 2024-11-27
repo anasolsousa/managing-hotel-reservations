@@ -29,13 +29,13 @@ export function AppLayout(){
             </header>
                 <div>
                     <ul className={styles.menu}> 
-                        <Link to={"/Countries"}
+                        <Link to={"/"}
                             className={
                                 // serve para ele ler e aplicar ou nao o active
-                                location.pathname.includes("/Countries")? styles.active: ""  
+                                location.pathname.includes("/")? styles.active: ""  
                             }
                             > 
-                            <li>Countries</li>
+                            <li>Home</li>
                         </Link>
                     </ul>
                     <Outlet/>

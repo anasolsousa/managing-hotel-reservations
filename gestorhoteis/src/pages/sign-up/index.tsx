@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
+import Countries from "../../components/Countries";
 
 export function SignUp(){
 
@@ -60,6 +61,10 @@ export function SignUp(){
                     return;
                 }
             }
+
+            function handleClick(){
+                alert("Sucessde");
+            }
             
             return(
                 // form
@@ -85,14 +90,14 @@ export function SignUp(){
                         </label>
                         <label>
                             <p>Country</p>
-                            <input type="country_id" onChange={(event) => setCountry_id(event.target.value)} required/>
+                            <Countries onChange={(countryId) => setCountry_id(countryId)} />
                         </label>
                         <label className={styles.checkbox}>
                             <h3>{terms ? "You accepted the terms and conditions." : "Accept terms and conditions."}</h3>
                             <input type="checkbox" onChange={(event) => setTerms(event.target.checked) } required/>
                         </label>
 
-                        <button type="submit">Create account</button>
+                        <button type="submit" onClick={handleClick}>Create account</button>
                     </form>
                 </main>
                 

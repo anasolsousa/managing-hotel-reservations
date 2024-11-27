@@ -6,9 +6,15 @@ import styles from "./styles.module.css";
 type Country = {
     id: string,
     name: string,
-}
+};
+// propriada esperada pelo componente
+// Função que será chamada ao selecionar um país
+type CountriesProps = {
+    onChange: (country_id: string) => void;
+};
 
-function Countries(){
+// possa ser usado em outras partes do seu projeto
+export default function Countries({onChange}: CountriesProps){
 
      // useEffect para chamar o fechHoteis
      useEffect(() => {
@@ -36,20 +42,21 @@ function Countries(){
     return (
         <main>
             <body>
-                <select>
-                    <option value="">Select...</option>
-                    {
-                        countries.map((country) => {
-                            return(
-                            <option value={country.id}>{country.name}</option>
-                            )
-                        })
-                    }
-                    </select>
+            <select
+                onChange={(event) => onChange(event.target.value)} // Chama a função ao alterar o valor
+                    required
+                    >
+                    <option value="">Selecione...</option>
+
+                    {countries.map((country) => (
+                        <option key={country.id} value={country.id}>
+                            {country.name}
+                        </option>
+                    ))}
+                </select>
             </body>  
         </main>
     )
 }
 
-// possa ser usado em outras partes do seu projeto
-export default Countries;
+
