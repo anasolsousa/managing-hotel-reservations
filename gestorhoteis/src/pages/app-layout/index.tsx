@@ -1,7 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import styles from "./styles.module.css";
 
-
 export function AppLayout(){
 
     // localizar página

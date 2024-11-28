@@ -1,15 +1,17 @@
 .countrySelect {
     padding: 0 35px;
 	  height: 35px;
-	  font-size: 1rem;
+	  font-size: 10px;
     background-color: rgb(248, 248, 248);
     border: 1px solid rgb(255, 255, 255);
     color: black;
     color-scheme: black;
     border-radius: 20px;
     margin-bottom: 1.5rem;
+    text-transform: uppercase;
   }
  
+  
   .countrySelect:focus {
     outline: none;
     border: 1px solid rgb(253 186 116);

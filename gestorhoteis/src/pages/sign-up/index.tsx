@@ -62,7 +62,7 @@ export function SignUp(){
                 }
             }
 
-            
+
             return(
                 // form
                 <main className={styles.main}>

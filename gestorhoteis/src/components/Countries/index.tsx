@@ -10,7 +10,7 @@ type Country = {
 // propriada esperada pelo componente
 // Função que será chamada ao selecionar um país
 type CountriesProps = {
-    onChange: (country_id: string) => void;
+    onChange: (id: string) => void;
 };
 
 // possa ser usado em outras partes do seu projeto
@@ -26,8 +26,6 @@ export default function Countries({onChange}: CountriesProps){
     // Countries[] (final do código): Indica que o estado é uma lista de objetos que seguem o tipo Countries.
     const [countries, setCountries] = useState<Country[]>([]);
 
-    const [filterByCountries, setFilterByCountries] = useState(0);
-
     async function fetchCountries() {
 
         await fetch('https://api-tma-2024-production.up.railway.app/countries', {
@@ -39,21 +37,25 @@ export default function Countries({onChange}: CountriesProps){
         })
     }
 
+
     return (
         <main>
             <body>
-            <select className={styles.countrySelect}
-                onChange={(event) => onChange(event.target.value)} // Chama a função ao alterar o valor
-                    required
-                    >
-                    <option value="">- Select Country -</option>
+                <label>
+                    <select className={styles.countrySelect}
+                    onChange={(event) => onChange(event.target.value)} // Chama a função ao alterar o valor
+                        required
+                        >
+                        <option value=""> Select Country </option>
 
-                    {countries.map((country) => (
-                        <option key={country.id} value={country.id}>
-                            {country.name}
-                        </option>
-                    ))}
-                </select>
+                        {countries.map((country) => (
+                            <option key={country.id} value={country.id}>
+                                {country.name}
+                            </option>
+                        ))}
+
+                    </select>
+                </label>
             </body>  
         </main>
     )
