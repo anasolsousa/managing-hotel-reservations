@@ -48,20 +48,22 @@ export function SignIn(){
 
     // associar a funcao ao evento onSubmit
     return(
-        <>
-        <h1>Sign-in</h1>
+        
+        <main className={styles.main}>
+            <h1>Sign-in</h1>
 
-        <form className={styles.form} onSubmit={handleLogin}>
-            <div className={styles.formInput}>
+            <form className={styles.form} onSubmit={handleLogin}>
+                <div className={styles.formInput}>
+                    <label>
+                        <input type="email" placeholder="Email" onChange={(event) => setEmail(event.target.value)} required/>
+                    </label>
                 <label>
-                    <input type="email" placeholder="Email" onChange={(event) => setEmail(event.target.value)} required/>
-                </label>
-               <label>
-                    <input type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} required/>
-               </label>      
-                <button type="submit">Entrar</button>
-            </div>
-        </form>
-        </>
+                        <input type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} required/>
+                </label>      
+                    <button type="submit">Enter</button>
+                </div>
+            </form>
+        </main>
+        
     )
 }

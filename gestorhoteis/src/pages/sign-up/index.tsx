@@ -92,7 +92,7 @@ export function SignUp(){
                             <input type="checkbox" onChange={(event) => setTerms(event.target.checked) } required/>
                         </div>
 
-                        <button type="submit">Create account</button>
+                        <button type="submit">Create</button>
                     </form>
                 </main>
                 

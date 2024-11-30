@@ -1,40 +1,79 @@
 
-.conteiner{
-    background-color: #f6f5f5;
+.conteiner {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    padding: 1rem;
-}
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+  }
 
-.buttons{
+.navbar{
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* Cor de fundo da navbar */
+    padding: 10px 0;
+    order: 1px solid #e0e0e0; /* Linha fina na parte superior e inferior */
 }
 
-.button{
-    margin-left: 1rem;
-
-    a{
-        text-decoration: none;
-        color :black;
-        text-transform: uppercase;
-        
-    }
-}
-
-.menu a{
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Botões no cabeçalho */
+  .buttons {
+    display: flex;
+  }
+  
+  .button {
+    margin-left: 15px;
+  }
+  
+  .button a {
+    color: #f97316;
     text-decoration: none;
-    color: black;
-    list-style-type: none;
-    text-align: center;
-   
-
-}
-
-.menu a:hover{
-    text-decoration-line: underline;
-    text-underline-offset: 8px;
-}
-
-
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* Navbar */
+  .menu {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding: 10px 0;
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .menu li {
+    margin: 0 20px;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #6c757d; /* Cinza para abas inativas */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  
+  /* Aba ativa */
+  .menu .active {
+    color: #000; /* Preto */
+    border-bottom: 3px solid #f97316; /* Linha roxa embaixo */
+    font-weight: bold;
+    list-style: none;
+  }
+  
+  .menu a:hover {
+    color: #000;
+  }
+  

@@ -2,6 +2,8 @@
 
 .main{
     text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px; 
 }
 
 h1{
@@ -43,6 +45,8 @@ label p{
 .formInput input:focus {
     outline: none;
     border: 1px solid rgb(253 186 116);
+    background-color: rgb(255 237 213);
+    transition-duration: 100ms;
 }
 
 input[type="date"] {
@@ -80,6 +84,7 @@ input[type="date"] {
     border-radius: 20px;
     border: none;
     margin-top: 2rem;
+    text-transform: capitalize;
 }
 
 .form button:hover{

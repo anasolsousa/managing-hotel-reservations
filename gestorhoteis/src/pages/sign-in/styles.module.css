@@ -1,5 +1,11 @@
 
 
+.main{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
 label{
     display: flex;
     flex-direction: column;
@@ -25,12 +31,15 @@ label p{
     color-scheme: black;
     border-radius: 20px;
     margin-bottom: 1.5rem;
+
 }
 
 
 .formInput input:focus {
     outline: none;
     border: 1px solid rgb(253 186 116);
+    background-color: rgb(255 237 213);
+    transition-duration: 100ms;
 }
 
 .form button{
@@ -40,6 +49,8 @@ label p{
     border-radius: 20px;
     border: none;
     margin-top: 2rem;
+    font-size: 13px;
+    text-transform: capitalize;
 }
 
 .form button:hover{

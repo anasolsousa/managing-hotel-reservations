@@ -1,12 +1,21 @@
 
+main{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .li{
     list-style-type: none;
     font: 1rem;
 }
 
 .title{
-    font-size: 1.5rem;
-    margin-top: 200px;
+    margin-top: 100px;
+    color: #f97316;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .SubTitle{
@@ -37,13 +46,14 @@
     color: rgb(158, 158, 158);
 }
 
-button{
-    background-color: rgb(253 186 116);
+.moreDetails{
+    font-size: 14px;
     background-color: #f97316;
+    color: white;
     border: none;
-    border-radius: 10px;
-    padding: 5px 10px;
+    padding: 10px 30px;
     margin: 5px;
-    font-size: 1rem;
-    text-transform: uppercase;
+    border-radius: 20px;
+    
 }
+
