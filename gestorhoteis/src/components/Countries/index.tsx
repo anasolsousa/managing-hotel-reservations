@@ -10,7 +10,7 @@ type Country = {
 // propriada esperada pelo componente
 // Função que será chamada ao selecionar um país
 type CountriesProps = {
-    onChange: (id: string) => void;
+    onChange: (id: string, name: string) => void;
 };
 
 // possa ser usado em outras partes do seu projeto

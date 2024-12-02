@@ -3,32 +3,68 @@ import Countries from "../../components/Countries";
 import styles from "./styles.module.css"
 import { useNavigate } from "react-router-dom";
 
+// definir a tipagem do obejeto
 type Hotel = {
     id: string,
     name: string;
     location: string;
+    description: string;
 }
 
-export function Home(){
+type cancellationPolicy = {
+  id: string;
+  description: string;
+}
 
+{/* 
+// array
+type amenities = {
+  id: string;
+  name: string;
+}
+// array
+type rooms = {
+  id: string;
+  name: string;
+  bookings: [];
+}
+
+type bookings ={
+  id: string;
+  checkIn: string;
+  checkOut: string;
+}
+
+type images = {
+  id: string;
+  url: string; 
+}*/}
+
+
+export function Home(){
+    
+    // usada para navegar para outra página
     const navigate = useNavigate();
     
-    // serve para armazenar o pais selecionado
+    // armazena o pais selecionado
     const [selectCountryId, setSelectCountryId] = useState<string>("");
-    const [hotels, setHotels] = useState<Hotel[]>([]);
-    
+    // armazena a lista dos hoteis selecionados consuante o pais
+    const [hotels, setHotels] = useState<Hotel[]>([]); 
      // armazena o hotel selecionado - null porque nao tem nenhum selecionado 
      const [detailsHotel, setDetailsHotel] = useState<Hotel | null>(null);
 
+     const [cancellationPolicy, setcancellationPolicy] = useState<cancellationPolicy[]>([]); 
+
     // funcao é chamada ao selecionar o pais
     const handelCountrySelect = (countryId: string) => {
-        setSelectCountryId(countryId);
+        setSelectCountryId(countryId); // atualiza consuante o pais
     }
-    // funcao é chamada ao selecionar o hotel
+    // funcao é chamada ao selecionar o hotel | e navega para página dos detalhes
     const handelHotelSelect = (hotel: Hotel) => {
         navigate("/details", { state: hotel });
     }
     
+    // funcao para atualizar e mostar novos dados
     useEffect(() =>{
         if(selectCountryId) {
                 fetchHotels(selectCountryId);
@@ -36,8 +72,9 @@ export function Home(){
     }, [selectCountryId]); // atualizar sempre que o pais mudar
 
     async function fetchHotels() {
-    
-            setHotels([]); // limpar dados antigos dos hoteis
+
+            // limpar os dados anteriores e mostrar novos dados
+            setHotels([]);
             setDetailsHotel(null);
 
             fetch("https://api-tma-2024-production.up.railway.app/hotels", {
@@ -51,6 +88,7 @@ export function Home(){
             })
             .catch((error) => console.error(error));
     }
+    
 
     return(
         <main>
