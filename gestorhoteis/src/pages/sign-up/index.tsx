@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import Countries from "../../components/Countries";
+import { Countries } from "../../components/Countries";
 
 export function SignUp(){
 

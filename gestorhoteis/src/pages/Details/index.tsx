@@ -1,16 +1,16 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Hotel } from "../home"; // Importe o tipo Hotel
+
 
 export function Details() {
 
   // Pegue o hotel passado via state
   const location = useLocation();
-  const hotel = location.state as Hotel; // Use o tipo Hotel
+  const hotel = location.state as Home; // Use o tipo Hotel
 
   const navigate = useNavigate(); // Corrigir a falta da declaração de navigate
 
   // UseState e função de navegação para detalhes
-  const handelHotelSelect = (hotel: Hotel) => {
+  const handelHotelSelect = (hotel: Home) => {
     navigate("/details", { state: hotel });
   };
   

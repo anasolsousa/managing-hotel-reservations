@@ -1,20 +1,60 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
+
+type Hotel = {
+    id: string;
+    name: string;
+    description: string;
+    location: string;
+    country: {
+        id: string;
+        name: string;
+    }
+    cancellationPolicy: {
+        id: string;
+        name: string;
+    }
+    rooms: {
+        id: string;
+        type: string;
+        price: number;
+
+        images: {
+            url: string;
+        }
+        bookings: {
+            reviwes: {
+                id: string;
+                bookingId: string;
+                rating: number;
+                comment: string;
+            }
+        }
+    }
+    hotelAmenity:{
+        amenity: {
+            name: string;
+        }    
+    }
+    averageReview:{
+        mumber: number;
+    }
+}
+
+type CountriesProps = {
+    hotels: Hotel[];
+    setCountryHotels: ([]: Hotel[]) => void;
+}
 
 // caracterizar dados
 type Country = {
     id: string,
     name: string,
 };
-// propriada esperada pelo componente
-// Função que será chamada ao selecionar um país
-type CountriesProps = {
-    onChange: (id: string, name: string) => void;
-};
 
 // possa ser usado em outras partes do seu projeto
-export default function Countries({onChange}: CountriesProps){
+export function Countries(props: CountriesProps) {
 
      // useEffect para chamar o fechHoteis
      useEffect(() => {
@@ -28,37 +68,28 @@ export default function Countries({onChange}: CountriesProps){
 
     async function fetchCountries() {
 
-        await fetch('https://api-tma-2024-production.up.railway.app/countries', {
-            method: "GET"
-        }).then(async(Response) => {
+        await fetch('https://api-tma-2024-production.up.railway.app/countries')
+        .then(async(Response) => {
             const data = await Response.json(); // estrair dados
             console.log(data); // verificar
             setCountries(data.countries);   // Atualiza   
         })
     }
 
-
     return (
-        <main>
-            <body>
-                <label>
-                    <select className={styles.countrySelect}
-                    onChange={(event) => onChange(event.target.value)} // Chama a função ao alterar o valor
-                        required
-                        >
-                        <option value=""> Select Country </option>
+        <select className={styles.countrySelect} onChange={(event) => {
+            props.setCountryHotels(props.hotels.filter((hotel) =>
+                hotel.country.id === event.target.value
+            ));
+        }}>
+            <option value=""> Select Country </option>
 
-                        {countries.map((country) => (
-                            <option key={country.id} value={country.id}>
-                                {country.name}
-                            </option>
-                        ))}
+            {countries.map((country) => (
+                <option key={country.id} value={country.id}>
+                    {country.name}
+                </option>
+            ))}
 
-                    </select>
-                </label>
-            </body>  
-        </main>
+        </select>
     )
 }
-
-
