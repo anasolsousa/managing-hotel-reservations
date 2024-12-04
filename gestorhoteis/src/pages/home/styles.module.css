@@ -1,5 +1,5 @@
 
-main{
+.content{
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -21,6 +21,8 @@ main{
 .SubTitle{
     text-transform: uppercase;
     color: black;
+    text-align: center;
+    text-align: 1rem;
 }
 
 .Card{
@@ -55,5 +57,31 @@ main{
     margin: 5px;
     border-radius: 20px;
     
+}
+
+
+.countrySelect {
+    padding: 0 35px;
+	height: 35px;
+	font-size: 10px;
+    background-color: rgb(248, 248, 248);
+    border: 1px solid rgb(255, 255, 255);
+    color: black;
+    color-scheme: black;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    align-items: center;
+  }
+  
+ 
+  
+  .countrySelect:focus {
+    outline: none;
+    border: 1px solid rgb(253 186 116);
+    background-color: rgb(255 237 213);
+    transition-duration: 100ms;
 }
 

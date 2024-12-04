@@ -57,9 +57,9 @@ export function SignIn(){
                     <label>
                         <input type="email" placeholder="Email" onChange={(event) => setEmail(event.target.value)} required/>
                     </label>
-                <label>
-                        <input type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} required/>
-                </label>      
+                    <label>
+                            <input type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} required/>
+                    </label>      
                     <button type="submit">Enter</button>
                 </div>
             </form>

@@ -9,7 +9,7 @@ export function AppLayout(){
     return(
         <main>
             <header>
-                <div className={styles.conteiner}>
+                <div className={styles.content}>
                     <div
                     className={styles.logo}>
                     <Link to="/">

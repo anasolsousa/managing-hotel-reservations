@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import {Countries} from "../../components/Countries";
 import styles from "./styles.module.css"
 import { useNavigate } from "react-router-dom";
 
@@ -91,32 +90,30 @@ export function Home(){
     
 
     return(
-        <main>
-            <header>
-                <h1 className={styles.title}>
-                    Choose the country of your dreams... and if the budget <br/> doesn't allow it, choose another one!
-                </h1>
+        <div className={styles.content}>
+
+            <h1 className={styles.title}>
+                Choose the country of your dreams... and if the budget <br/> doesn't allow it, choose another one!
+            </h1>
+
+            <select className={styles.countrySelect} onChange={(event) => {
+                setCountryHotels(
+                    hotels.filter((hotel) => {
+                        return hotel.country.id === event.target.value;
+                    })
+                );
+
+            }}>
+                <option value=""> Select Country </option>
+                {countries.map((country) => {
+                    return <option value={country.id}>{country.name}</option>
+                })}
+            </select>
+
                 <div>
-                    <h1 className={styles.SubTitle}>Hotels</h1>
-
-                    <select onChange={(event) => {
-                        setCountryHotels(
-                            hotels.filter((hotel) => {
-                                return hotel.country.id === event.target.value;
-                            })
-                        );
-
-                    }}>
-                        <option value=""> Select Country </option>
-                        {countries.map((country) => {
-                            return <option value={country.id}>{country.name}</option>
-                        })}
-
-                    </select>
-                    
+                    <h2 className={styles.SubTitle}>Hotels</h2>
                         <ul className={styles.ul}>
                             {countryHotels.map((hotel) => (
-                                
                                 <div  className={styles.Card}>
                                     <div>
                                         <li key={hotel.id} 
@@ -126,7 +123,7 @@ export function Home(){
                                             className={styles.CardLocation}>{hotel.location}
                                         </li>
                                     </div>
-                                    <div>
+                                <div>
                                     <button
                                         className={styles.moreDetails}
                                         onClick={() => {}}
@@ -137,9 +134,7 @@ export function Home(){
                                 </div>
                             ))}
                         </ul>
-                    
                 </div>
-            </header>
-        </main>
+        </div> 
     )
 }

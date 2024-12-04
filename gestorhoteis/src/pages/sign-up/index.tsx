@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import { Countries } from "../../components/Countries";
+import { Home } from "../home";
 
 export function SignUp(){
 
@@ -83,7 +83,7 @@ export function SignUp(){
                                 <input className={styles.formDate} placeholder="Date of Birth" type="date"  onChange={(event) => setbirth_date(event.target.value)} required/>  
                             </label>
                             <label>
-                                <Countries onChange={(countryId) => setCountry_id(countryId)} />
+                               {/* <Countries onChange={(countryId) => setCountry_id(countryId)} />*/}
                             </label>
                         </div>
                         
@@ -95,10 +95,6 @@ export function SignUp(){
                         <button type="submit">Create</button>
                     </form>
                 </main>
-                
-                
-                
-               
             )
 }
     
