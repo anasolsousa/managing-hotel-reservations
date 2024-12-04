@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { Home } from "../home";
 
@@ -11,6 +11,23 @@ export function SignUp(){
     const [birth_date, setbirth_date] = useState("");
     const [country_id, setCountry_id] = useState("");
     const [terms, setTerms] = useState(false); // boolean
+
+    // armazenar o country selecionado
+    const [countries, setCountries] = useState<[]>([]);
+
+    useEffect(() =>{
+        fetchCountries();
+      }, []); 
+
+    async function fetchCountries() {
+
+        await fetch("https://api-tma-2024-production.up.railway.app/countries")
+        .then(async(Response) => {
+                const data = await Response.json(); // estrair dados
+                console.log(data); // verificar 
+                setCountries(data.countries);
+            })
+    }
 
     async function handleCreateNewAccount(event) {
 
@@ -50,7 +67,7 @@ export function SignUp(){
                 }catch(e) {
                     console.log(e)
                 }
-            }
+    }
 
             function handleChange(event){
 
@@ -62,7 +79,7 @@ export function SignUp(){
                 }
             }
 
-
+            
             return(
                 // form
                 <main className={styles.main}>
@@ -83,7 +100,14 @@ export function SignUp(){
                                 <input className={styles.formDate} placeholder="Date of Birth" type="date"  onChange={(event) => setbirth_date(event.target.value)} required/>  
                             </label>
                             <label>
-                               {/* <Countries onChange={(countryId) => setCountry_id(countryId)} />*/}
+                                <select className={styles.countrySelect} onChange={(event) => {
+                                        setCountry_id(event.target.value) 
+                                    }} required>
+                                    <option value=""> Select Country </option>
+                                    {countries.map((country) => {
+                                        return <option value={country.id}>{country.name}</option>
+                                    })}
+                                </select>
                             </label>
                         </div>
                         
