@@ -20,17 +20,21 @@ type infoHotel = {
         id: string;
         name: string;
     }
+
     cancellationPolicy: {
         id: string;
         name: string;
     }
+    
     rooms: {
         id: string;
         type: string;
         price: number;
         
         images: {
+            id: string;
             url: string;
+            roomId: string;
         }
 
         bookings: {
@@ -43,10 +47,7 @@ type infoHotel = {
         }
     }
 
-   
-
     amenities: string;
-
 
     hotelAmenity:{
         amenity: {
@@ -106,15 +107,22 @@ type infoHotel = {
                         <p>localizacao: {hotel.location}</p>
                         <p>pais: {hotel.country.name}</p>
                         <p>politica cancelamento: {hotel.cancellationPolicy.name}</p>
-                        <p>{hotel.rooms.id}</p>
-                         {/*// nao esta a funcionar ainda
-
-                            <p>Quartos: {hotel.rooms.type}</p>
-                            <p>Quartos preço: {hotel.rooms.price}</p>
-                            <p>{hotel.images.url}</p>
-                        */}
                         <p>comodidades: {hotel.amenities}</p> 
                         <p>estrelas: {hotel.averageReview}</p>
+                        
+                        <br/><br/>
+                            {hotel.rooms.map((room) => (
+                                <div key={room.id}>
+                                    <p>Tipo: {room.type}</p>
+                                    <p>Preço: {room.price}</p>
+
+                                    {room.images.map((img) => (
+                                        <div key={img.id}>
+                                            <img src={img.url} alt=""/>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))} 
                         <br/><br/>
                     </div>
                 ))}
