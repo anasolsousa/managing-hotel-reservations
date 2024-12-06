@@ -4,17 +4,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
+    background-color:  #EAE7E2;
+    border-bottom: 1px solid #d3cfc8;
   }
 
 .navbar{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff; /* Cor de fundo da navbar */
+    background-color: #ffffff; 
     padding: 10px 0;
-    order: 1px solid #e0e0e0; /* Linha fina na parte superior e inferior */
+    order: 1px solid #e0e0e0; 
 }
 
   /* Logo */
@@ -33,17 +33,21 @@
   }
   
   .button a {
-    color: #f97316;
+    color: #3F2917;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
+  }
+
+  .button a:hover{
+    color: rgb(249, 115, 22);
+    transition: color 0.3s ease, border-bottom 0.3s ease;
   }
   
   /* Navbar */
   .menu {
     display: flex;
     justify-content: center;
-    background-color: #fff;
     padding: 10px 0;
   }
   
@@ -61,19 +65,20 @@
   .menu a {
     text-decoration: none;
     font-size: 14px;
-    color: #6c757d; /* Cinza para abas inativas */
+    color: #6c757d;
     transition: color 0.3s ease, border-bottom 0.3s ease;
   }
   
-  /* Aba ativa */
+ 
   .menu .active {
-    color: #000; /* Preto */
-    border-bottom: 3px solid #f97316; /* Linha roxa embaixo */
+    color: #000; 
+    border-bottom: 3px solid #3F2917; 
     font-weight: bold;
     list-style: none;
   }
   
   .menu a:hover {
-    color: #000;
+    color: rgb(249, 115, 22);
+    border-bottom: 2px solid rgb(249, 115, 22);
   }
   

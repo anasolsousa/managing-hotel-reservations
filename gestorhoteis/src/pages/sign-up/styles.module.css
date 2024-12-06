@@ -77,19 +77,36 @@ input[type="date"] {
     }
 }
 
+.countrySelect {
+    padding: 0 35px;
+	height: 35px;
+    background-color: rgb(248, 248, 248);
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(95, 95, 95);
+    color-scheme: #3F2917;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
 .form button{
-    background-color: rgb(249 115 22);
+    background-color:#3F2917;
     color: white;
     padding: 10px 30px;
-    border-radius: 20px;
+    border-radius: 6px;
     border: none;
     margin-top: 2rem;
+    font-size: 14px;
     text-transform: capitalize;
 }
 
 .form button:hover{
     background-color: rgb(253 186 116);
     color: white;
+    transition: background-color 0.3s ease, border-bottom 0.3s ease;
 }
 
 

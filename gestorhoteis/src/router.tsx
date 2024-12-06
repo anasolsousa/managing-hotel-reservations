@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
                 element: <SignIn/>
             },
             {
-                path: "/Details",
+                path: "/Details/:id",
                 element: <Details/>
             }
         ]

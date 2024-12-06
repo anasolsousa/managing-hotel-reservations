@@ -66,15 +66,15 @@ type infoHotel = {
         const [hotels, setHotels] = useState<infoHotel[]>([]);
         const [countryHotels, setCountryHotels] = useState<infoHotel[]>([]);
         const [countries, setCountries] = useState<country[]>([]);
-        const [details, setDetails] = useState<infoHotel[]>([]);
+        
 
         
         // funcao para atualizar e mostar novos dados
         useEffect(() =>{
-        fetchHotels();
-        fetchCountries();
+            fetchHotels();
+            fetchCountries();
         }, []); // atualizar sempre que o pais mudar
-
+        
         async function fetchHotels() {
 
             await fetch("https://api-tma-2024-production.up.railway.app/hotels")
@@ -83,6 +83,7 @@ type infoHotel = {
                     console.log(data); // verificar 
                     setHotels(data.hotels);
                 })
+                
         }
 
         async function fetchCountries() {
@@ -94,63 +95,29 @@ type infoHotel = {
                     setCountries(data.countries);
                 })
         }
-        
-        function Details() {
 
-            return(
-            <div className="content">
-                <h1>Details</h1>
-                {hotels.map((hotel) => (
-                    <div key={hotel.id}>
-                        <p>Nome: {hotel.name}</p>
-                        <p>descricao: {hotel.description}</p>
-                        <p>localizacao: {hotel.location}</p>
-                        <p>pais: {hotel.country.name}</p>
-                        <p>politica cancelamento: {hotel.cancellationPolicy.name}</p>
-                        <p>comodidades: {hotel.amenities}</p> 
-                        <p>estrelas: {hotel.averageReview}</p>
-                        
-                        <br/><br/>
-                            {hotel.rooms.map((room) => (
-                                <div key={room.id}>
-                                    <p>Tipo: {room.type}</p>
-                                    <p>Preço: {room.price}</p>
 
-                                    {room.images.map((img) => (
-                                        <div key={img.id}>
-                                            <img src={img.url} alt=""/>
-                                        </div>
-                                    ))}
-                                </div>
-                            ))} 
-                        <br/><br/>
-                    </div>
-                ))}
-            </div>
-        
-            )
-        }
-        
         return(
             <div className={styles.content}>
 
                 <h1 className={styles.title}>
                     Choose the country of your dreams... and if the budget <br/> doesn't allow it, choose another one!
                 </h1>
-
-                <select className={styles.countrySelect} onChange={(event) => {
-                    setCountryHotels(
-                        hotels.filter((hotel) => {
-                            return hotel.country.id === event.target.value;
-                        })
-                    );
-
-                }}>
-                    <option value=""> Select Country </option>
-                    {countries.map((country) => {
-                        return <option value={country.id}>{country.name}</option>
-                    })}
-                </select>
+                <div className={styles.select}>
+                    <select className={styles.countrySelect} onChange={(event) => {
+                        setCountryHotels(
+                            hotels.filter((hotel) => {
+                                return hotel.country.id === event.target.value;
+                            })
+                        );
+                    }}>
+                        <option value=""> Select Country </option>
+                        {countries.map((country) => {
+                            return <option value={country.id}>{country.name}</option>
+                        })}
+                    </select>
+                </div>
+              
 
                     <div>
                         <h2 className={styles.SubTitle}>Hotels</h2>
@@ -169,8 +136,10 @@ type infoHotel = {
                                         </div>
                                     <div>
                                         <button
-                                            className={styles.moreDetails} onClick={(event) => {
-                                                navigate("/Details")
+                                            className={styles.moreDetails} 
+                                            onClick={() => {
+                                                // serve para passar a listagem dos hoteis, para passar o id para a url
+                                                navigate(`/Details/${hotel.id}`, {state: {hotels: countryHotels}}); 
                                             }}
                                             >
                                             Details
@@ -181,7 +150,7 @@ type infoHotel = {
                             </ul>
                     </div>
 
-                    <p><Details/></p>
+                    
 
             </div> 
         )

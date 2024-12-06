@@ -1,0 +1,77 @@
+.card{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(248, 248, 248);
+    margin: 10px;
+    padding: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+
+    .colum1{
+        width: 50%;
+        text-align: left;
+        padding-left: 10px;
+        color: #3F2917;
+    }
+    .colum2{
+        width: 50%;
+        text-align: left;
+        padding-left: 30px;
+        border-left: 1px solid #3F2917;
+    }
+}
+
+
+.imghotel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 50px;
+
+    img{
+        width: 500px;
+        padding: 20px;
+    }
+
+} 
+.loc {
+    display: flex;
+    flex-direction: row;
+
+    p{
+        margin: 0;
+    }
+}
+
+.heTitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .averageReview{
+        color:  rgb(158, 158, 158);
+    }
+
+    p{
+        padding-right: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    img{
+        padding-left: 4px;
+        width: 15px;
+    }
+}
+
+.menu{
+    display: flex;
+    
+}

@@ -43,17 +43,18 @@ label p{
 }
 
 .form button{
-    background-color: rgb(249 115 22);
+    background-color:#3F2917;
     color: white;
     padding: 10px 30px;
-    border-radius: 20px;
+    border-radius: 6px;
     border: none;
     margin-top: 2rem;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: capitalize;
 }
 
 .form button:hover{
     background-color: rgb(253 186 116);
     color: white;
+    transition: background-color 0.3s ease, border-bottom 0.3s ease;
 }
