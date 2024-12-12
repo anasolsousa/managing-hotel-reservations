@@ -77,6 +77,11 @@
     
 }
 
+.moreDetails:hover{
+    background-color: #815530;
+    transition-duration: 100ms;
+}
+
 
 .countrySelect {
     padding: 0 20px;

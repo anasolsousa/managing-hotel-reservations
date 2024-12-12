@@ -73,52 +73,51 @@ export function Details() {
   
   return (
     <div className={styles.content}>
-      <h1>Details</h1>
+      <h1>Details {selectedHotel.name}</h1>
       <div>
-      {/*{selectedHotel.rooms.map((room) => (
-            <div className={styles.imgsHotel} key={room.id}>
+        {/* info geral hotel */}
+        <div className={styles.cardHotel}>
+            <div className={styles.colum1}>
+                <div className={styles.heTitle}>
+                    <p className={styles.title}>{selectedHotel.name}</p>
+                    <p className={styles.averageReview}>
+                        {selectedHotel.averageReview} 
+                        <img src={img} /> 
+                    </p>
+                </div>
+                <div className={styles.loc}>
+                    <p>{selectedHotel.country.name}, {selectedHotel.location}</p>
+                </div>
+                <div className={""}>
+                    <p>{selectedHotel.description}</p>
+                    <p>Política de Cancelamento: {selectedHotel.cancellationPolicy.name}</p>
+                </div>
+                <div>
+                    <p>Comodidades: {selectedHotel.amenities}</p>  
+                </div>
+            </div> 
+        </div> 
+
+         {/* img hotel */}
+        {selectedHotel.rooms.map((room) => (
+            <div key={room.id}  className={styles.imghotel}>
                 {room.images.map((img) => (
                     <img key={img.id} src={img.url}/>
                 ))}  
             </div>
-        ))}*/}
-        {selectedHotel.rooms.map((room) => (
-            <div key={room.id}>
-                <div key={room.id}  className={styles.imghotel}>
-                {room.images.map((img) => (
-                    <div>
-                        <img key={img.id} src={img.url}/>
-                    </div>
-                ))}
-            </div>
-                 <div className={styles.card}>
-                    <div className={styles.colum1}>
-                        <div className={styles.heTitle}>
-                            <p className={styles.title}>{selectedHotel.name}</p>
-                            <p className={styles.averageReview}>
-                                {selectedHotel.averageReview} 
-                                <img src={img} /> 
-                            </p>
-                        </div>
-                        <div className={styles.loc}>
-                            <p>{selectedHotel.country.name}, {selectedHotel.location}</p>
-                        </div>
-                        <div className={""}>
-                            <p>{selectedHotel.description}</p>
-                            <p>Política de Cancelamento: {selectedHotel.cancellationPolicy.name}</p>
-                        </div>
-                        <div>
-                            <p>Comodidades: {selectedHotel.amenities}</p>  
-                        </div>
-                    </div> 
-                    <div className={styles.colum2}>
-                        <p>{room.type}</p>
-                        <p>Valor: {room.price} €</p>
-                        <button>Reservar</button>
-                    </div>
-                </div>  
-            </div>
-        ))}
+        ))} 
+            
+        {/* quartos hotel */}
+        <div className={styles.cardRoom}>
+            {selectedHotel.rooms.map((room) => (
+                <div className={styles.room}>
+                    <p className={styles.title}>{room.type}</p>
+                    <p>Preço: {room.price} €</p>
+                    <button>Reservar</button>
+                </div>
+            ))}
+        </div>
+
       </div>
     </div>
   );

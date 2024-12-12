@@ -1,4 +1,4 @@
-.card{
+.cardHotel{
     display: flex;
     flex-direction: row;
     background-color: rgb(248, 248, 248);
@@ -13,11 +13,40 @@
         padding-left: 10px;
         color: #3F2917;
     }
-    .colum2{
-        width: 50%;
-        text-align: left;
-        padding-left: 30px;
-        border-left: 1px solid #3F2917;
+}
+
+.cardRoom{
+    display: grid;
+    column-gap:10px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin: 0 90px;
+    margin-bottom: 100px;
+    
+
+    .room{
+        background-color: rgb(248, 248, 248);
+        padding: 30px 20px;
+        margin-bottom: 10px;
+    }
+
+    .title{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    button{
+        font-size: 10px;
+        background-color: #3F2917;
+        color: white;
+        border: none;
+        padding: 5px 15px;
+        margin: 5px;
+        border-radius: 6px;
+    }
+    button:hover{
+        background-color: #815530;
+        transition-duration: 100ms;
     }
 }
 
@@ -25,11 +54,10 @@
 .imghotel{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    margin-left: 50px;
+    justify-content: center;
 
     img{
-        width: 500px;
+        width: 580px;
         padding: 20px;
     }
 
