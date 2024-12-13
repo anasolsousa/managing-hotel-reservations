@@ -73,27 +73,30 @@ export function Details() {
   
   return (
     <div className={styles.content}>
-      <h1>Details {selectedHotel.name}</h1>
+      <h1 className={styles.DetailsTitle}>Details {selectedHotel.name}</h1>
       <div>
         {/* info geral hotel */}
         <div className={styles.cardHotel}>
-            <div className={styles.colum1}>
-                <div className={styles.heTitle}>
-                    <p className={styles.title}>{selectedHotel.name}</p>
-                    <p className={styles.averageReview}>
-                        {selectedHotel.averageReview} 
-                        <img src={img} /> 
-                    </p>
+            <div className={styles.Cardcolumm}>
+                <div className={styles.cardHeader}>
+                    <div className={styles.heTitle}>
+                        <p className={styles.title}>{selectedHotel.name}</p>
+                        <p className={styles.averageReview}>
+                            {selectedHotel.averageReview} 
+                            <img src={img} /> 
+                        </p>
                 </div>
                 <div className={styles.loc}>
                     <p>{selectedHotel.country.name}, {selectedHotel.location}</p>
+                </div>
+
                 </div>
                 <div className={""}>
                     <p>{selectedHotel.description}</p>
                     <p>Política de Cancelamento: {selectedHotel.cancellationPolicy.name}</p>
                 </div>
                 <div>
-                    <p>Comodidades: {selectedHotel.amenities}</p>  
+                    <p>{selectedHotel.amenities}</p> 
                 </div>
             </div> 
         </div> 

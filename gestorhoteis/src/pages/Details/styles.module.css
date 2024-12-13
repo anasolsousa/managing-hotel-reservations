@@ -1,3 +1,9 @@
+.DetailsTitle{
+    color:  rgb(158, 158, 158);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
 .cardHotel{
     display: flex;
     flex-direction: row;
@@ -7,7 +13,7 @@
     margin-left: 100px;
     margin-right: 100px;
 
-    .colum1{
+    .Cardcolumm{
         width: 50%;
         text-align: left;
         padding-left: 10px;
@@ -18,7 +24,7 @@
 .cardRoom{
     display: grid;
     column-gap:10px;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 10px;
     margin: 0 90px;
     margin-bottom: 100px;
@@ -71,14 +77,20 @@
     }
 }
 
+.cardHeader{
+    padding: 10px 10px 50px 10px;
+}
+
 .heTitle{
     display: flex;
     flex-direction: row;
     align-items: center;
+   
 
     .title{
         font-weight: bold;
         text-transform: uppercase;
+        color: rgb(249, 115, 22);
     }
     .averageReview{
         color:  rgb(158, 158, 158);
