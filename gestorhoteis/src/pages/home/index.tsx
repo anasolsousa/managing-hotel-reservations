@@ -149,9 +149,6 @@ type infoHotel = {
                                 ))}
                             </ul>
                     </div>
-
-                    
-
             </div> 
         )
 

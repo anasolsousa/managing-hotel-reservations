@@ -9,9 +9,9 @@ export function SignIn(){
     const [password, setPassword] = useState("");
     const navigate = useNavigate(); //redirecionar o ultilizador e guarda essa funcao na variavel
 
+    
 
     async function handleLogin(event) {
-        
         event.preventDefault();
 
         // verifica se os campos sao preenchidos
@@ -37,7 +37,7 @@ export function SignIn(){
                     
                     localStorage.setItem("token", data.token)
                     // para redirecionar para outro local apos login bem sucedido
-                    navigate("/") 
+                    navigate("/Profile");
                 } else{
                     alert(data.message || "Erro ao fazer login. Verifique suas credenciais.");
                 }
@@ -45,8 +45,7 @@ export function SignIn(){
                 console.log(e) // se der algum erro sera mostrado aqui
             }
     }
-
-    // associar a funcao ao evento onSubmit
+    
     return(
         
         <main className={styles.main}>
