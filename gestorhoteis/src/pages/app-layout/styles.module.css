@@ -24,10 +24,6 @@
   }
   
   /* Botões no cabeçalho */
-  .buttons {
-    display: flex;
-  }
-  
   .button {
     margin-left: 15px;
   }
@@ -68,13 +64,15 @@
     color: #6c757d;
     transition: color 0.3s ease, border-bottom 0.3s ease;
   }
-  
- 
-  .menu .active {
+
+  .menu{
     color: #000; 
-    border-bottom: 3px solid #3F2917; 
     font-weight: bold;
     list-style: none;
+  }
+
+  .active {
+    border-bottom: 3px solid #3F2917;
   }
   
   .menu a:hover {

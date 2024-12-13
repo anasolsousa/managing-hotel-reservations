@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 export function SignIn(){
@@ -58,10 +58,14 @@ export function SignIn(){
                     </label>
                     <label>
                             <input type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} required/>
-                    </label>      
+                    </label> 
                     <button type="submit">Enter</button>
+
+                    <div className={styles.button}>
+                        <Link to="/SignUp">Create an Account</Link>
+                    </div>
                 </div>
-            </form>
+            </form>            
         </main>
         
     )

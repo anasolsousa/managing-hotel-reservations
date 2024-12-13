@@ -1,22 +1,13 @@
-import { Link, Outlet, useLocation, useNavigate} from "react-router-dom";
+import { Link, Outlet, useLocation} from "react-router-dom";
 import styles from "./styles.module.css";
 
 export function AppLayout(){
 
     // localizar página
     const location = useLocation();
-    const navigate = useNavigate();
     
     // verificar se esta logado
     const isLoggedIn = !!localStorage.getItem("token");
-
-    const handleLogout = () => {
-        // Remover o token do localStorage
-        localStorage.removeItem("token");
-    
-        // Redirecionar para a página de login
-        navigate("/");
-    };
 
     return(
         <main>
@@ -41,28 +32,9 @@ export function AppLayout(){
                         </svg>
                     </Link> 
                     </div>
-
-                    <div className={styles.buttons}>
-                        <div className={styles.button}>
-                            <Link to="/SignUp">Create an Account</Link>
-                        </div>
                         <div className={styles.button}> 
                             <Link to="/SignIn">Sign In</Link>
-                        </div>
-                            {isLoggedIn && (
-                                <div className={styles.button}>
-                                    <button onClick={() => navigate("/Profile")}>Prefil</button>
-                                </div>
-                            )}
-                        </div>
-                        <div>
-                            {isLoggedIn && (
-                                <div className={styles.button}>
-                                    <button onClick={handleLogout}>Logout</button>
-                                </div>
-                            )}
-                        </div>
-                    
+                            </div>
                     </div>
             </header>
                 <div>
@@ -70,11 +42,21 @@ export function AppLayout(){
                         <Link to={"/"}
                             className={
                                 // serve para ele ler e aplicar ou nao o active
-                                location.pathname.includes("/")? styles.active: ""  
+                                location.pathname.includes("/Home")? styles.active: ""  
                             }
                             > 
                             <li>Home</li>
                         </Link>
+                        {isLoggedIn && (
+                            <Link to={"/Profile"}
+                                className={
+                                    location.pathname.includes("/Profile")? styles.active: ""  
+                                }
+                                >
+                                <li>Profile</li>
+                            </Link>
+                        )}
+
                     </ul>
                     <Outlet/>
                 </div>
