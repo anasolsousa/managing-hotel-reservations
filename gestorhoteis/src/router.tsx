@@ -5,14 +5,14 @@ import { SignIn } from "./pages/sign-in";
 import { Home } from "./pages/home";
 import { Details } from "./pages/Details";
 import { Profile } from "./pages/Profile/index";
-
+import { UpdateEmail } from "./pages/UpdateEmail";
 
 export const router = createBrowserRouter([
     {
         element: <AppLayout/>,
         children: [
             {
-                path: "/Home",
+                path: "/",
                 element: <Home/>
             },
             {
@@ -31,6 +31,11 @@ export const router = createBrowserRouter([
                 path: "/Profile",
                 element: <Profile/>
             },
+            {
+                path: "/UpdateEmail",
+                element: <UpdateEmail/>
+            }
+
         ]
     }
 ])

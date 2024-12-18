@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css"
 import { useNavigate } from "react-router-dom";
-import img from "../../../public/star.svg";
+import img from "../../assets/icons/star.svg";
 
 // definir a tipagem do obejeto
 type country = {
@@ -66,8 +66,6 @@ type infoHotel = {
         const [hotels, setHotels] = useState<infoHotel[]>([]);
         const [countryHotels, setCountryHotels] = useState<infoHotel[]>([]);
         const [countries, setCountries] = useState<country[]>([]);
-        
-
         
         // funcao para atualizar e mostar novos dados
         useEffect(() =>{
@@ -139,7 +137,7 @@ type infoHotel = {
                                             className={styles.moreDetails} 
                                             onClick={() => {
                                                 // serve para passar a listagem dos hoteis, para passar o id para a url
-                                                navigate(`/Details/${hotel.id}`, {state: {hotels: countryHotels}}); 
+                                                navigate(`/Details/${hotel.id}`, {state: {hotels: countryHotels}});
                                             }}
                                             >
                                             Details
@@ -151,8 +149,6 @@ type infoHotel = {
                     </div>
             </div> 
         )
-
-        
     }
 
     

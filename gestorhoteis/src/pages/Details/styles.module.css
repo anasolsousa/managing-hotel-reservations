@@ -22,12 +22,14 @@
 }
 
 .cardRoom{
-    display: grid;
-    column-gap:10px;
+    display: flex;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 10px;
     margin: 0 90px;
     margin-bottom: 100px;
+    justify-items: end;
+    align-items: center;
+    flex-direction: column;
     
 
     .room{
@@ -59,7 +61,7 @@
 
 .imghotel{
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: center;
 
     img{
@@ -68,6 +70,12 @@
     }
 
 } 
+
+.images{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 .loc {
     display: flex;
     flex-direction: row;

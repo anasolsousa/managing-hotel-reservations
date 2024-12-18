@@ -80,6 +80,7 @@
 .moreDetails:hover{
     background-color: #815530;
     transition-duration: 100ms;
+    color: white;
 }
 
 
@@ -105,4 +106,3 @@
     border: 1px solid #976237;
     transition-duration: 100ms;
 }
-

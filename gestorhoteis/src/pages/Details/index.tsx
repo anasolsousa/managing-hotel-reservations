@@ -1,7 +1,7 @@
 import { useParams, useLocation } from "react-router-dom";
 import { Key, useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import img from "../../../public/star.svg";
+import img from "../../assets/icons/star.svg";
 
 // definir a tipagem do obejeto
 
@@ -43,7 +43,7 @@ type infoHotel = {
         }
     }
 
-    amenities: string;
+    amenities: string[];
 
     hotelAmenity:{
         amenity: {
@@ -96,7 +96,9 @@ export function Details() {
                     <p>Política de Cancelamento: {selectedHotel.cancellationPolicy.name}</p>
                 </div>
                 <div>
-                    <p>{selectedHotel.amenities}</p> 
+                   {selectedHotel.amenities.map((amenity, i) => (
+                    <p key={i}>{amenity}</p>
+                   ))}
                 </div>
             </div> 
         </div> 
@@ -104,23 +106,18 @@ export function Details() {
          {/* img hotel */}
         {selectedHotel.rooms.map((room) => (
             <div key={room.id}  className={styles.imghotel}>
-                {room.images.map((img) => (
-                    <img key={img.id} src={img.url}/>
-                ))}  
-            </div>
-        ))} 
-            
-        {/* quartos hotel */}
-        <div className={styles.cardRoom}>
-            {selectedHotel.rooms.map((room) => (
-                <div className={styles.room}>
+                <div className={styles.cardRoom}>
                     <p className={styles.title}>{room.type}</p>
                     <p>Preço: {room.price} €</p>
                     <button>Reservar</button>
                 </div>
-            ))}
-        </div>
-
+                 <div className={styles.images}>
+                    {room.images.map((img) => (
+                        <img key={img.id} src={img.url}/>
+                    ))}
+                 </div>
+            </div>
+        ))}
       </div>
     </div>
   );

@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { Home } from "../home";
+import { useNavigate } from "react-router-dom";
+type country = {
+    id: string;
+    name: string;
+}
 
 export function SignUp(){
 
@@ -13,7 +18,8 @@ export function SignUp(){
     const [terms, setTerms] = useState(false); // boolean
 
     // armazenar o country selecionado
-    const [countries, setCountries] = useState<[]>([]);
+    const [countries, setCountries] = useState<country[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() =>{
         fetchCountries();
@@ -62,13 +68,16 @@ export function SignUp(){
                         // 201 - indica que algo foi criado com sucesso
                         if(response.status === 201){
                             localStorage.setItem("token", data.token)
+                            navigate("/Profile");
                         }   
                     }) // se der algum erro sera mostrado aqui
                 }catch(e) {
                     console.log(e)
                 }
-    }
 
+            
+    }
+{/*
             function handleChange(event){
 
                 event.preventDefault();
@@ -78,7 +87,7 @@ export function SignUp(){
                     return;
                 }
             }
-
+ */}
             
             return(
                 // form

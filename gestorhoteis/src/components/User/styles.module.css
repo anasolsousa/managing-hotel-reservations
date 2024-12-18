@@ -1,0 +1,43 @@
+.user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.userName{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 18px;
+
+    svg{
+        width: 13px;
+    }
+}
+.userEmail{
+    text-transform: uppercase;
+    font-size: 13px;
+    color:  #919191;
+    margin: 0px 0px;
+    padding-top: 1rem;
+}
+
+.userBirth{
+    text-transform: uppercase;
+    font-size: 13px;
+    color:  #919191;
+    margin: 0px 0px;
+    padding-bottom: 9rem;
+}
+
+.userPerfil{
+    padding: 20px 0px;
+    text-align: left;
+
+    button{
+        padding-top: 40px;
+    }
+}

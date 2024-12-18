@@ -1,0 +1,53 @@
+.form{
+    text-align: center;
+    padding-left: 2rem;
+}
+
+.formInput input{
+	padding: 0 10px;
+	height: 35px;
+	font-size: 1rem;
+    background-color: rgb(248, 248, 248);
+    border: 1px solid rgb(255, 255, 255);
+    color: black;
+    color-scheme: black;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+
+}
+
+
+.formInput input:focus {
+    outline: none;
+    border: 1px solid rgb(253 186 116);
+    background-color: rgb(255 237 213);
+    transition-duration: 100ms;
+}
+
+.form button{
+    background-color:#3F2917;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 2rem;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.form button:hover{
+    background-color: rgb(253 186 116);
+    color: white;
+    transition: background-color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.button {
+    padding-top: 50px;
+
+    a {
+        color: #3F2917;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+      }
+}
