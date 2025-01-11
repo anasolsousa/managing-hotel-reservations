@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css"
 import { useNavigate } from "react-router-dom";
-import img from "../../assets/icons/star.svg";
+import { Star } from "lucide-react";
 
 // definir a tipagem do obejeto
 type country = {
@@ -125,7 +125,7 @@ type infoHotel = {
                                         <div>
                                             <li key={hotel.id} 
                                                 className={styles.CardName}>{hotel.name} <p>{hotel.averageReview}</p>
-                                                <img src={img}/>
+                                               <Star color="gray" width={18}/>
 
                                             </li>
                                             <li 

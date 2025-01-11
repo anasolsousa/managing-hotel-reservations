@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
@@ -11,7 +11,7 @@ export function SignIn(){
 
     
 
-    async function handleLogin(event) {
+    async function handleLogin(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         // verifica se os campos sao preenchidos
@@ -38,6 +38,7 @@ export function SignIn(){
                     localStorage.setItem("token", data.token)
                     // para redirecionar para outro local apos login bem sucedido
                     navigate("/Profile");
+                    console.log("token")
                 } else{
                     alert(data.message || "Erro ao fazer login. Verifique suas credenciais.");
                 }

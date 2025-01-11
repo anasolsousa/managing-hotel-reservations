@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Details } from "./pages/Details";
 import { Profile } from "./pages/Profile/index";
 import { UpdateEmail } from "./pages/UpdateEmail";
+import { NewBooking } from "./pages/newBooking/index";
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
             {
                 path: "/UpdateEmail",
                 element: <UpdateEmail/>
+            },
+            {
+                path: "/newBooking/:id",
+                element: <NewBooking/>
             }
 
         ]

@@ -43,8 +43,8 @@
         text-transform: uppercase;
     }
 
-    button{
-        font-size: 10px;
+    .buttonBooking{
+        font-size: 13px;
         background-color: #3F2917;
         color: white;
         border: none;
@@ -52,7 +52,7 @@
         margin: 5px;
         border-radius: 6px;
     }
-    button:hover{
+    .buttonBooking:hover{
         background-color: #815530;
         transition-duration: 100ms;
     }

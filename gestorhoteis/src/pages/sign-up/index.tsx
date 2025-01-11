@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { Home } from "../home";
 import { useNavigate } from "react-router-dom";
+
 type country = {
     id: string;
     name: string;
@@ -35,7 +36,7 @@ export function SignUp(){
             })
     }
 
-    async function handleCreateNewAccount(event) {
+    async function handleCreateNewAccount(event: FormEvent<HTMLFormElement>) {
 
         event.preventDefault();
         
@@ -77,17 +78,6 @@ export function SignUp(){
 
             
     }
-{/*
-            function handleChange(event){
-
-                event.preventDefault();
-
-                // !terms = verificar se o "terms" é false se sim ele obriga a marcar true
-                if(!terms) {
-                    return;
-                }
-            }
- */}
             
             return(
                 // form

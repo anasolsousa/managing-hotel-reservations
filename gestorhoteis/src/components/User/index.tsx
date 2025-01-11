@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
+import { User } from "lucide-react";
+import { Booking, InfoUser } from "../../types";
 
-type User = {
-    name: string,
-    email:  string,
-    birthDate: string,
-  }
+
 
 export function Users(){
 
 
-    const [user, setUser] = useState<User| null>(null);
+    const [user, setUser] = useState<InfoUser| null>(null);
+    const [bookings, setBookings] = useState<Booking[]>([]);
 
 
     useEffect(() =>{
@@ -28,17 +27,18 @@ export function Users(){
              "Content-Type": "application/json",
            },
          })
-         .then(async(Response) => {
-                 const data = await Response.json(); 
+         .then(async(response) => {
+                 const data = await response.json(); 
                  console.log(data);
                  setUser(data.user);
+                 setBookings(data.bookings);
              })
      }
 
      return (
       <div>
         <div className={styles.user}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+           <User/>
             <p className={styles.userName}>{user?.name}</p>
         </div>
           <p className={styles.userEmail}>{user?.email}</p>

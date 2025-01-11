@@ -1,17 +1,26 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Users } from "../../components/User";
-import iconEmail from "../../assets/icons/mail.svg";
-import iconLogOut from "../../assets/icons/log-out.svg";
+import { useEffect, useState } from "react";
+import { BookingsAndReviews} from "../../components/BookingsAndReviews"
+import { LogOut, Mail } from "lucide-react";
 
-export function Profile(){
+  type booking = {
+    id: string;
+    roomId: string;
+    startDate: Date;
+    endDate: Date;
+  }
+  export function Profile(){
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isLoggedIn = !!localStorage.getItem("token"); // verificar se esta logado
+    const navigate = useNavigate();
+    const isLoggedIn = !!localStorage.getItem("token"); // verificar se esta logado
 
-   // fazer log out
-   const handleLogout = () => {
+    const [bookings, setBookings] = useState<booking[]>([]);
+    const token = localStorage.getItem("token");
+
+    // fazer log out
+    const handleLogout = () => {
       // Remover o token do localStorage
       localStorage.removeItem("token");
 
@@ -19,40 +28,55 @@ export function Profile(){
       navigate("/");
     };
 
-  return(
-    <main>
-      <div className={styles.content}>
-        <h1 className={styles.title}>User Profile</h1>
-          <div className={styles.container}>
-              <section className={styles.columnOne}>
-                  <Users/>
+    useEffect(() => {
+      fetchBookings();
+    }, []);
+
+    async function fetchBookings() {
+      try{
+        const response = await fetch("https://api-tma-2024-production.up.railway.app/booking", {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          }
+        });
+
+        if(response.ok){
+          const data = await response.json();
+          setBookings(data);
+        }
+        else{
+          console.error("Erro")
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    
+    return(
+      <main>
+        <div className={styles.content}>
+          <h1 className={styles.title}>User Profile</h1>
+            <div className={styles.container}>
+                <section className={styles.columnOne}>
+                    <Users/>
+                    {/* botao */}
+                    <div className={styles.changeEmail}>
+                      <Mail/>
+                      <button onClick={() => navigate("/UpdateEmail")}>Change Email</button>
+                    </div>
                   {/* botao */}
-                  <div className={styles.changeEmail}>
-                    <img className="svg" src={iconEmail} /> 
-                    <button onClick={() => navigate("/UpdateEmail")}>Change Email</button>
+                  <div>
+                      {isLoggedIn && (
+                          <div className={styles.UserLogOut}>
+                           <LogOut/>
+                              <button onClick={handleLogout}>Logout</button>
+                          </div>
+                      )}
                   </div>
-                 {/* botao */}
-                <div>
-                    {isLoggedIn && (
-                        <div className={styles.UserLogOut}>
-                           <img className="svg" src={iconLogOut} /> 
-                            <button onClick={handleLogout}>Logout</button>
-                        </div>
-                    )}
-                </div>
-              </section>
-            <section className={styles.section}>
-              <div>
-                <h2>Suas Estadias</h2>
-                <p>Aqui é as estadias</p>
-              </div>
-              <div>
-                <h2>Suas Reviews</h2>
-                <p>Aqui é as Reviewa</p>
-              </div> 
-            </section>
-          </div>
-      </div>   
-    </main>
-  )
-}
+                </section>
+                  <BookingsAndReviews/>
+            </div>
+        </div>   
+      </main>
+    )
+  }

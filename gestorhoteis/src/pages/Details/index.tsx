@@ -1,124 +1,94 @@
-import { useParams, useLocation } from "react-router-dom";
-import { Key, useEffect, useState } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import img from "../../assets/icons/star.svg";
+import { Hotel } from "../../types";
+import { Star } from "lucide-react";
 
-// definir a tipagem do obejeto
 
-type infoHotel = {
-
-    id: string;
-    name: string;
-    description: string;
-    location: string;
-
-    country: {
-        id: string;
-        name: string;
-    }
-
-    cancellationPolicy: {
-        id: string;
-        name: string;
-    }
-    
-    rooms: {
-        id: string;
-        type: string;
-        price: number;
-        
-        images: {
-            id: string;
-            url: string;
-            roomId: string;
-        }
-
-        bookings: {
-            reviwes: {
-                id: string;
-                bookingId: string;
-                rating: number;
-                comment: string;
-            }
-        }
-    }
-
-    amenities: string[];
-
-    hotelAmenity:{
-        amenity: {
-            name: string;
-        }    
-    }
-    averageReview: number;
-}
 
 export function Details() {
-  const { id } = useParams(); // Captura o ID da URL
-  const location = useLocation();
-  const { hotels } = location.state || { hotels: [] };
 
-  const [selectedHotel, setSelectedHotel] = useState<infoHotel | null>(null);
+    const { id } = useParams(); // Captura o ID da URL
+    const location = useLocation();
+    const { hotels } = location.state || { hotels: [] };
 
-  useEffect(() => {
-    if (id) {
-      const hotel = hotels.find((hotel: { id: string; }) => hotel.id === id);
-      setSelectedHotel(hotel || null);
+    const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (id) {
+        const hotel = hotels.find((hotel: { id: string; }) => hotel.id === id);
+        setSelectedHotel(hotel || null);
+        }
+    }, [id, hotels]);
+
+    if (!selectedHotel) {
+        return <p>Informações não encontradas</p>;
     }
-  }, [id, hotels]);
+    
+    return (
+        <div className={styles.content}>
+        <h1 className={styles.DetailsTitle}>Details {selectedHotel.name}</h1>
+        <div>
+            {/* info geral hotel */}
+            <div className={styles.cardHotel}>
+                <div className={styles.Cardcolumm}>
+                    <div className={styles.cardHeader}>
+                        <div className={styles.heTitle}>
+                            <p className={styles.title}>{selectedHotel.name}</p>
+                            <p className={styles.averageReview}>
+                                {selectedHotel.averageReview} 
+                            </p>
+                            <Star color="gray" width={18}/>
+                    </div>
+                    <div className={styles.loc}>
+                        <p>{selectedHotel.country.name}, {selectedHotel.location}</p>
+                    </div>
 
-  if (!selectedHotel) {
-    return <p>Informações não encontradas</p>;
-  }
-  
-  return (
-    <div className={styles.content}>
-      <h1 className={styles.DetailsTitle}>Details {selectedHotel.name}</h1>
-      <div>
-        {/* info geral hotel */}
-        <div className={styles.cardHotel}>
-            <div className={styles.Cardcolumm}>
-                <div className={styles.cardHeader}>
-                    <div className={styles.heTitle}>
-                        <p className={styles.title}>{selectedHotel.name}</p>
-                        <p className={styles.averageReview}>
-                            {selectedHotel.averageReview} 
-                            <img src={img} /> 
-                        </p>
-                </div>
-                <div className={styles.loc}>
-                    <p>{selectedHotel.country.name}, {selectedHotel.location}</p>
-                </div>
-
-                </div>
-                <div className={""}>
-                    <p>{selectedHotel.description}</p>
-                    <p>Política de Cancelamento: {selectedHotel.cancellationPolicy.name}</p>
-                </div>
-                <div>
-                   {selectedHotel.amenities.map((amenity, i) => (
-                    <p key={i}>{amenity}</p>
-                   ))}
-                </div>
-            </div> 
-        </div> 
-
-         {/* img hotel */}
-        {selectedHotel.rooms.map((room) => (
-            <div key={room.id}  className={styles.imghotel}>
-                <div className={styles.cardRoom}>
-                    <p className={styles.title}>{room.type}</p>
-                    <p>Preço: {room.price} €</p>
-                    <button>Reservar</button>
-                </div>
-                 <div className={styles.images}>
-                    {room.images.map((img) => (
-                        <img key={img.id} src={img.url}/>
+                    </div>
+                    <div className={""}>
+                        <p>{selectedHotel.description}</p>
+                        <p>Política de Cancelamento: {selectedHotel.cancellationPolicy.name}</p>
+                    </div>
+                    <div>
+                    {selectedHotel.amenities.map((amenity, i) => (
+                        <p key={i}>{amenity}</p>
                     ))}
-                 </div>
-            </div>
-        ))}
-      </div>
-    </div>
-  );
+                    </div>
+                </div> 
+            </div> 
+
+            {/* img hotel */}
+            {selectedHotel.rooms.map((room) => (
+                <div key={room.id}  className={styles.imghotel}>
+                    <div className={styles.cardRoom}>
+                        <p className={styles.title}>{room.type}</p>
+                        <p>Preço: {room.price} €</p>
+                        <button
+                            className={styles.button} 
+                            onClick={() => {
+
+                                const token = localStorage.getItem("token");
+
+                                if (!token) {
+                                    navigate("/SignIn"); 
+                                    return;
+                                }
+                                // serve para passar o id para a url e algumas informações
+                                navigate(`/newBooking/${room.id}`);
+                            }}
+                            >
+                            Reservar
+                        </button>
+                    </div>
+                    <div className={styles.images}>
+                        {room.images.map((img) => (
+                            <img key={img.id} src={img.url}/>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+        </div>
+    );
 }
